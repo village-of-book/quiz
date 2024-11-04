@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>answer</title>
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <main>
+
+        <section>
+          <h1>ドキドキ２択クイズ</h1>
+        </section>
+    
+    
+        <section>
+          <h2 id="quiz_rule">クイズのルール</h2>
+        </section>
+    
+
+    
+    
+        <section>
+          
+          <ul>
+            <li>考える時間は、15秒</li>
+            <li>もし間違えたら即失格(今回のGEEKは諦めろ)</li>
+            <li>①か、②で答えること</li>
+            <li>①か、②の他や曖昧な答えは全て間違いとみなす</li>
+          </ul>
+    
+        </section>
+
+        <section>
+          <div id="comment">
+            <p>気付いたようだね。</p>
+            <p>その通り！このクイズに正解なんてない！！</p>
+            <p>しかし回答は①か②でしか言えないルールだ。</p>
+        </div>
+        </section>
+
+          <div class="silent">
+            <p>つまり答えられない。</p>
+            <h2>沈黙しかないんだ。</h2>  
+          </div>
+
+      </main>
+
+      <script>
+          const say = (text) => {
+    const uttr = new SpeechSynthesisUtterance("Hello World!")
+    speechSynthesis.speak(uttr)
+  }
+      </script>
+    
+      <script>
+        console.log(location.href)
+
+        setTimeout(() => {
+            location.href = "quiz_appendix.html"
+        }, 20000);
+      </script>
+
+</body>
+</html>

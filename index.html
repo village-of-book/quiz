@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz</title>
+    <link rel="stylesheet" href="css/quiz.css">
+</head>
+<body>
+    <main>
+      
+        <section>
+          <h1>ドキドキ２択クイズ</h1>
+        </section>
+    
+    
+        <section>
+          <h2 id="quiz_rule">クイズのルール</h2>
+        </section>
+    
+
+    
+    
+        <section>
+          
+          <ul>
+            <li>考える時間は、15秒</li>
+            <li>もし間違えたら即失格(今回のGEEKは諦めろ)</li>
+            <li>①か、②で答えること</li>
+            <li>①か、②の他や曖昧な答えは全て間違いとみなす</li>
+          </ul>
+    
+        </section>
+    
+    
+        <section>
+          <h2>それでは問題</h2>
+        </section>
+    
+        <section id="quiz_content">
+          <p>お前の母親と恋人が悪党に捕まり、</p>
+          <p>一人しか助けられない。</p>
+        </section>
+        
+    
+        <section  id="result">
+          <h2>回答は？？</h2>
+        </section>
+    
+    
+        <section>
+          <button id="button1"  onclick="location.href='https://village-of-book.github.io/janken/'">
+            <h2>①</h2>
+            <p id="answer1">母親</p>
+          </button>
+          <button id="button2"  onclick="location.href='https://village-of-book.github.io/janken/'">
+            <h2>②</h2>
+          <p id="answer2">恋人</p></button>
+        </section>
+
+        <div id="timer"></div>
+    
+      </main>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <script>
+         //乱数設定する
+        const random_number = Math.floor(Math.random()*3);
+          if (random_number === 0) {
+            $("#quiz_content").text("お前の母親と恋人が悪党に捕まり、一人しか助けられない。")
+            $("#answer1").text("母親")
+            $("#answer2").text("恋人")
+        
+        } else if (random_number=== 1) {
+          $("#quiz_content").text("息子と娘が誘拐された。一人しか取り戻せない。")
+          $("#answer1").text("娘")
+          $("#answer2").text("息子")
+       
+        }
+    
+          else {
+            $("#quiz_content").text("５人のチームで活動している。どちらの道を選ぶ。")
+            $("#answer1").text("５人で行けるが長く困難な道")
+            $("#answer2").text("３人しか行けないが短く簡単な道")
+        
+        }
+    
+
+       </script>
+      <!-- <script>
+        //  ボタン１押下時の設定
+        $("#button1").on("click",function(){
+          location.replace("http://127.0.0.1:5500/index.html");
+          }, false);
+      </script> -->
+
+
+      <script>
+        const totalTime = 15000;
+        const oldTime = Date.now();
+
+        const timeId = setInterval(() => {
+        const currentTime = Date.now();
+
+        // 差分を求める
+        const diff = currentTime - oldTime;
+
+        const diffSec = totalTime - diff;
+
+        //ミリ秒を整数に変換
+        const remainSec = Math.ceil(diffSec / 1000);
+
+        let text = `残り${remainSec}秒`;
+
+         // 0秒以下になったら
+        if (diffSec <= 0) {
+        clearInterval(timeId);
+
+        // タイマー終了の文言を表示する
+        text = "ぶ〜、終〜了〜";
+        }
+
+        // 画面に表示する
+        document.querySelector('#timer').innerHTML = text;
+        })
+
+        $("#button2").on('click', function() {
+        });
+
+      </script>
+
+      <script>
+        console.log(location.href)
+
+        setTimeout(() => {
+            location.href = "quiz_answer.html"
+        }, 20000);
+      </script>
+    
+</body>
+</html>
