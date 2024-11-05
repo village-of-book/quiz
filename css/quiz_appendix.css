@@ -40,7 +40,7 @@ button {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 36px;
 }
 
 #comment {
@@ -54,6 +54,6 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
+    font-size: 26px;
   }
   
