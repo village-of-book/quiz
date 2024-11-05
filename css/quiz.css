@@ -54,4 +54,27 @@ h1 {
     align-items: center;
     font-size: 28px;
   }
+
+  .slideConts{
+    opacity: 0;
+  }
+
+  .slide{
+    animation: slideAnime 2s ease forwards;
+  }
+
+  @keyframes slideAnime {
+    from {
+    opacity: 0;
+    }
+
+    to {
+    opacity: 1;
+    }
+  }
+.txt1 {animation-delay: 2.0s;}
+.txt2 {animation-delay: 4.0s;}
+.txt3 {animation-delay: 6.0s;}
+.txt4 {animation-delay: 8.0s;}
+.txt5 {animation-delay: 10.0s;}
   

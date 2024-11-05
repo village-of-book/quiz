@@ -62,6 +62,43 @@
         $("#hunter").unMute():Void
       </script> -->
 
+      <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var player;
+
+        function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+        height: '100%',
+        width: '100%',
+        videoId: 'embed/bfv-VaaAlxc',  // 自動再生したいYouTube動画のIDを入力。例「S2P8PilNkCE」
+        playerVars: { 
+          'autoplay': 1,  // 初期値でAuto Playをオン。ミュートはここでは設定していません。
+          'controls': 1,
+          'rel': 0,
+          'modestbranding': 1,
+          },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+          }
+        });
+        }
+
+        function onPlayerReady(event) {
+  
+        event.target.setVolume(0);  // ここで音量の初期値を0%に設定
+
+        // 3秒後に音量を50%に変更
+        setTimeout(function() {
+        event.target.setVolume(50);  // %で音量を指定
+        }, 10); // 3000ミリ秒後に実行する
+        event.target.playVideo();
+        }
+      </script>
+
 
           
 </body>
