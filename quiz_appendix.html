@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>appendix</title>
     <link rel="stylesheet" href="css/quiz_appendix.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
     <main>
@@ -14,17 +15,17 @@
         </section>
         <section>
           <div id="comment">
-            <p>どちらを選んでも本当の正解じゃないけど</p>
-            <p>どちらか必ず選ばなくちゃならない時が</p>
-            <p>いつか来るかもしれない。</p>
-            <p>それこそが、このクイズの真の意図</p>
-            <p>あらゆる残酷な空想に耐えておけ</p>
-            <p>現実は突然 無慈悲になるものだから</p>
+            <p id="a">どちらを選んでも本当の正解じゃないけど</p>
+            <p id="b">どちらか必ず選ばなくちゃならない時が</p>
+            <p id="c">いつか来るかもしれない。</p>
+            <p id="d">それこそが、このクイズの真の意図</p>
+            <p id="e">あらゆる残酷な空想に耐えておけ</p>
+            <p id="f">現実は突然 無慈悲になるものだから</p>
         </div>
         </section>
 
           <div class="silent">
-            <p>いつか来る分かれ道に備えて</p>  
+            <p id="g">いつか来る分かれ道に備えて</p>  
           </div>
       
           <!-- <iframe 
@@ -44,60 +45,58 @@
               height="225" 
               src="https://www.youtube.com/embed/bfv-VaaAlxc?autoplay=1&mute=1&playsinline=1&loop=1&playlist=bfv-VaaAlxc&controls=0&disablekb=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <!-- <div class="content">
-              <div class="container">
-                <h1 class="title">
-                  YouTube Embed Background without JS
-                </h1>
-              </div>
-            </div> -->
           </section>
 
       
 
       </main>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-      <!-- <script>
-        $("#hunter").unMute():Void
-      </script> -->
 
       <script>
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        var player;
+        var id = ['a','b','c','d','e','f','g']; //指定するidを全て配列で渡す
+        var tx = [];
+        var txCount = [];
+        var txSp = 100; // テキストの表示速度
+        var dly = 0; // 次の文章までの待ち時間
+        var count = 0;
 
-        function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-        height: '100%',
-        width: '100%',
-        videoId: 'embed/bfv-VaaAlxc',  // 自動再生したいYouTube動画のIDを入力。例「S2P8PilNkCE」
-        playerVars: { 
-          'autoplay': 1,  // 初期値でAuto Playをオン。ミュートはここでは設定していません。
-          'controls': 1,
-          'rel': 0,
-          'modestbranding': 1,
-          },
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-          }
-        });
+        window.onload = function(){
+        kamikakushi();
+        countSet();
+        itimozi()
         }
 
-        function onPlayerReady(event) {
-  
-        event.target.setVolume(0);  // ここで音量の初期値を0%に設定
+        function countSet(){ // 文字数カウントの初期設定
+        for(n=0;n<id.length;n++){
+        txCount[n] = 0;
+        }
+        }
 
-        // 3秒後に音量を50%に変更
-        setTimeout(function() {
-        event.target.setVolume(50);  // %で音量を指定
-        }, 10); // 3000ミリ秒後に実行する
-        event.target.playVideo();
+
+        function kamikakushi(){ // 要素を取得して非表示（opacity:0;）にする
+        for(i=0;i<id.length;i++){
+        id[i] = document.getElementById(id[i]);
+        tx[i] = id[i].firstChild.nodeValue; // 初期の文字列
+        id[i].innerHTML = '';
+        }
+        }
+
+        function itimozi(){ //　一文字ずつ表示
+        id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
+        if(tx[count].length != txCount[count]){ // Count が初期の文字列の文字数と同じになるまでループ
+        setTimeout("itimozi()",txSp); // 次の文字へ進む
+        }else{
+        id[count].innerHTML = tx[count].substr( 0, ++txCount[count] ); // テキストの指定した数の間の要素を表示
+        count++; // 次の段落に進む為のカウントアップ
+        if(count != id.length){ // id数が最後なら終了
+        setTimeout("itimozi()",dly); // 次の段落へ進む
+        }
+        }
         }
       </script>
+
+
+
+
 
 
           
