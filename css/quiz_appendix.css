@@ -26,6 +26,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: left;
   }
   
   #timer{
@@ -55,5 +56,84 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 24px;
+    text-align: left;
+  }
+
+  .container {
+    width: 100%;
+    height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .animate {
+    font-size: 24px;
+    /* font-family:"Times New Roman", 游明朝, YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho Pro", serif; */
+  }
+  .animate span {
+    display: inline-block;
+  }
+  
+  .animate span:nth-of-type(2) {
+    animation-delay: .05s;
+  }
+  .animate span:nth-of-type(3) {
+    animation-delay: .1s;
+  }
+  .animate span:nth-of-type(4) {
+    animation-delay: .15s;
+  }
+  .animate span:nth-of-type(5) {
+    animation-delay: .2s;
+  }
+  .animate span:nth-of-type(6) {
+    animation-delay: .25s;
+  }
+  .animate span:nth-of-type(7) {
+    animation-delay: .3s;
+  }
+  .animate span:nth-of-type(8) {
+    animation-delay: .35s;
+  }
+  .animate span:nth-of-type(9) {
+    animation-delay: .4s;
+  }
+  .animate span:nth-of-type(10) {
+    animation-delay: .45s;
+  }
+  .animate span:nth-of-type(11) {
+    animation-delay: .5s;
+  }
+  .animate span:nth-of-type(12) {
+    animation-delay: .55s;
+  }
+  
+  .top-wrapper-txt span {
+    opacity: 0;
+    transform: translate(-150px, 0) scale(.3);
+    animation: leftRight .50s forwards;
+  }
+  
+  
+  @keyframes leftRight {
+    40% {
+      transform: translate(50px, 0) scale(.8);
+      opacity: 1;
+      color: #fff;
+    }
+  
+    60% {
+      color: #fff;
+    }
+  
+    80% {
+      transform: translate(0) scale(3);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translate(0) scale(1);
+      opacity: 1;
+    }
   }
   
